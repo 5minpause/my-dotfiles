@@ -1,0 +1,21 @@
+" Color scheme
+" colorscheme github
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
+set termguicolors       " enable true colors support
+" let g:gruvbox_italic=1
+colorscheme gruvbox
+
+set textwidth=100
+
+" Map Fixmyjs
+noremap <Leader><Leader>f :Fixmyjs<CR>
+
+" Bind Ctrl+n to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
+

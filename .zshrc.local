@@ -1,0 +1,47 @@
+export PATH="$(brew --prefix openssl)/bin:$HOME/.bin:$PATH"
+
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+
+# Setting for usin OpenSSL installed via Homebrew
+export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl@1.1)/include"
+export PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig"
+# Finish settings for using OpenSSL
+
+# Link ruby-build to Homebrew's OpenSSL
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(rbenv init -)"
+
+# RPROMPT="[%D{%f.%m.%y}|%T]"
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home"
+# source "$HOME/.tmuxinator.zsh"
+
+
+export PATH="${JAVA_HOME}/bin:$HOME/.bin:$PATH"
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+
+export DISABLE_SPRING=true
+
+# Perform interactive rebase, exclusive to commits on the current branch
+gbir() {
+  git rebase -i --autosquash $(git merge-base --fork-point "$@" $(git rev-parse --abbrev-ref HEAD))
+}
+
+# Apply working dir changes to the last commit w/o editing its message
+gfu() {
+  git commit --amend --no-edit
+}
+
+changes() {
+  git sl | tac
+}
+
+eval "$(starship init zsh)"

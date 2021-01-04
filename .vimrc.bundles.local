@@ -1,0 +1,5 @@
+Plug 'albertorestifo/github.vim'
+Plug 'preservim/nerdtree'
+Plug 'kjssad/quantum.vim'
+Plug 'morhetz/gruvbox'
+

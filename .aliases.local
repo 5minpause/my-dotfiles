@@ -1,0 +1,42 @@
+# Git
+alias gcoma="git commit -a"
+alias gst='g st'
+alias updatemaster="git checkout master && git fetch --all && git pull && git checkout -"
+alias gcl='g clone'
+alias pull="git pull"
+alias dbra="git branch -d"
+
+# Bundler / Ruby
+alias b="bundle"
+alias be="bundle exec"
+alias lg='lazygit'
+
+# Docker
+alias dcrw="docker-compose run web"
+alias dc="docker-compose"
+alias dc-rspec='docker-compose run -e "RAILS_ENV=test RACK_ENV=test" web rspec'
+alias dc-migrate='docker-compose run web bin/rails db:migrate RAILS_ENV=development'
+alias dc-migrate-test='docker-compose run -e "RAILS_ENV=test RACK_ENV=test" web bin/rails db:migrate RAILS_ENV=test'
+alias dc-console="dcrw bundle exec rails console -e development"
+alias stop-docker-containers='docker stop $(docker ps -a -q)'
+alias remove-docker-containers='docker rm $(docker ps -a -q)'
+
+# tmux
+alias tmat="tmux attach -t"
+alias tmns="tmux new-session -t"
+alias tmls="tmux ls"
+alias tmx="tmuxinator"
+
+# Code Quality
+alias rubocop-changes="git fetch && git diff-tree -r --no-commit-id --name-only master@\{u\} head | xargs ls -1 2>/dev/null | grep '\.rb$' | xargs rubocop"
+alias reek-changes="git fetch && git diff-tree -r --no-commit-id --name-only master@\{u\} head | xargs ls -1 2>/dev/null | grep '\.rb$' | xargs reek"
+alias flay-changes="git fetch && git diff-tree -r --no-commit-id --name-only master@\{u\} head | xargs ls -1 2>/dev/null | grep '\.rb$' | xargs flay"
+alias check-all="rubocop-changes && reek-changes && flay-changes"
+
+# Misc
+alias pwdcopy="pwd | pbcopy"
+alias y="clear;yarn"
+alias n="clear;npm"
+alias grcd='cd $(git root)' # Navigate to the current root of the git project
+alias sss="spring stop"
+

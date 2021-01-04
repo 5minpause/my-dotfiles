@@ -1,0 +1,18 @@
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf
+
+# Enable Ctrl-a a to jump to beginning of line
+bind a send-prefix
+
+# don't rename windows automatically
+set-option -g allow-rename off
+# set the name by usung prefix
+
+# Enable mouse for window switching
+set -g mouse on
+
