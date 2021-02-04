@@ -1,0 +1,52 @@
+[init]
+  templatedir = ~/.git_template
+[push]
+  default = current
+[color]
+  ui = auto
+[alias]
+  aa = add --all
+  ap = add --patch
+  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  ci = commit -v
+  co = checkout
+  pf = push --force-with-lease
+  st = status
+  br = branch
+  fea = fetch --all
+  bra = branch --all
+  sl = log --oneline --decorate -20
+  sla = log --oneline --decorate --graph --all -20
+  slap = log --oneline --decorate --graph --all
+  wdiff = diff -w --word-diff=color # diff by hiding whitespace and + - signs. source: https://thoughtbot.com/blog/powerful-git-macros-for-automating-everyday-workflows
+  root = rev-parse --show-toplevel # outputs the current root dir of the working copy
+  set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD` # sets the upstream to remote/localbranch
+  mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))' # 10 most recently used branches
+  rename-branch = branch -m
+  dbr = branch -d
+  Ddbr = branch -D
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+	attributesfile = /Users/holgerfrohloff/.gitattributes
+[merge]
+  ff = only
+[commit]
+  template = ~/.gitmessage
+	gpgsign = true
+[fetch]
+  prune = true
+[rebase]
+  autosquash = true
+[diff]
+  colorMoved = zebra
+[user]
+	name = Holger Frohloff
+	email = holger@holgerfrohloff.de
+	signingkey = 704FF67D
+[gpg]
+	program = /usr/local/bin/gpg
+[pull]
+	rebase = false
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
