@@ -28,7 +28,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home
 
 
 export PATH="${JAVA_HOME}/bin:$HOME/.bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+# export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 
 export DISABLE_SPRING=true
 
