@@ -19,7 +19,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [[ -f /usr/local/Cellar/nvm/**/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 
-eval "$(rbenv init -)"
+if command -v rbenv &> /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+[[ -f ~/.asdf/asdf.h ]] && source ~/.asdf/asdf.h
 
 # RPROMPT="[%D{%f.%m.%y}|%T]"
 
@@ -45,5 +49,7 @@ gfu() {
 changes() {
   git sl | tac
 }
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
 
-eval "$(starship init zsh)"
