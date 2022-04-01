@@ -1,5 +1,4 @@
 export PATH="$(brew --prefix openssl)/bin:$HOME/.bin:$PATH"
-
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
 export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
@@ -53,3 +52,27 @@ if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
+# adding shhist to PATH, so we can use it from Terminal
+PATH="${PATH}:/Applications/ShellHistory.app/Contents/Helpers"
+
+# creating an unique session id for each terminal session
+__shhist_session="${RANDOM}"
+
+# prompt function to record the history
+__shhist_prompt() {
+    local __exit_code="${?:-1}"
+    history -D -t "%s" -1 | sudo --preserve-env --user ${SUDO_USER:-${LOGNAME}} shhist insert --session ${TERM_SESSION_ID:-${__shhist_session}} --username ${LOGNAME} --hostname $(hostname) --exit-code ${__exit_code}
+    return ${__exit_code}
+}
+
+# integrating prompt function in prompt
+precmd_functions=(__shhist_prompt $precmd_functions)
+
+eval "$(direnv hook zsh)"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/holgerfrohloff/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/holgerfrohloff/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/holgerfrohloff/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/holgerfrohloff/google-cloud-sdk/completion.zsh.inc'; fi
