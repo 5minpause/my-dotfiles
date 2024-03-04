@@ -16,3 +16,19 @@ set-option -g allow-rename off
 # Enable mouse for window switching
 set -g mouse on
 
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Tmux resurrection of sessions after restart
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Configure resurrect
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'warp,fullscreen'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+

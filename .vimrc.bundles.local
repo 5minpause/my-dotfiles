@@ -1,3 +1,4 @@
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'albertorestifo/github.vim'
 Plug 'preservim/nerdtree'
 Plug 'kjssad/quantum.vim'

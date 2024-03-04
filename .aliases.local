@@ -6,20 +6,27 @@ alias gcl='g clone'
 alias pull="git pull"
 alias dbra="git branch -d"
 
+# Git Flow
+alias gff="git flow feature"
+alias gfh="git flow hotfix"
+
 # Bundler / Ruby
 alias b="bundle"
 alias be="bundle exec"
 alias lg='lazygit'
 
 # Docker
-alias dcrw="docker-compose run web"
-alias dc="docker-compose"
-alias dc-rspec='docker-compose run -e "RAILS_ENV=test RACK_ENV=test" web rspec'
-alias dc-migrate='docker-compose run web bin/rails db:migrate RAILS_ENV=development'
-alias dc-migrate-test='docker-compose run -e "RAILS_ENV=test RACK_ENV=test" web bin/rails db:migrate RAILS_ENV=test'
+alias dcrw="docker compose run web"
+alias dcr="docker compose run --rm"
+alias dc="docker compose"
+alias dc-rspec='docker compose run -e "RAILS_ENV=test RACK_ENV=test" web rspec'
+alias dc-migrate='docker compose run web bin/rails db:migrate RAILS_ENV=development'
+alias dcrm='docker compose run rake db:migrate' # Parcelly
+alias dc-migrate-test='docker compose run -e "RAILS_ENV=test RACK_ENV=test" web bin/rails db:migrate RAILS_ENV=test'
 alias dc-console="dcrw bundle exec rails console -e development"
 alias stop-docker-containers='docker stop $(docker ps -a -q)'
 alias remove-docker-containers='docker rm $(docker ps -a -q)'
+alias dps="docker ps"
 
 # tmux
 alias tmat="tmux attach -t"
